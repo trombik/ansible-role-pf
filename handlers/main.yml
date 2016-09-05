@@ -1,6 +1,4 @@
 ---
 
-- name: Restart pf_config
-  service:
-    name: pf
-    state: restarted
+- name: Reload pf.conf
+  command: pfctl -f {{ pf_conf }}
