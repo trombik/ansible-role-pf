@@ -9,5 +9,6 @@
   template:
     src: pf.conf.j2
     dest: "{{ pf_conf }}"
+    mode: 0600
     validate: "pfctl -nf %s"
   notify: Reload pf.conf
