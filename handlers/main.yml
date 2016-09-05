@@ -1,0 +1,6 @@
+---
+
+- name: Restart pf_config
+  service:
+    name: pf
+    state: restarted

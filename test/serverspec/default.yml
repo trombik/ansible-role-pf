@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - ansible-role-pf
+  vars:
+    pf_config: ""

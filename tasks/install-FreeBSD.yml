@@ -1,0 +1,6 @@
+---
+
+- name: Install pf
+  pkgng:
+    name: pf
+    state: present

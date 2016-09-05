@@ -1,0 +1,7 @@
+pf_user: pf
+pf_group: pf
+pf_log_dir: /var/log/pf
+pf_db_dir: "{{ __pf_db_dir }}"
+pf_service: pf
+pf_conf: "{{ __pf_conf }}"
+pf_flags: ""

@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-role-pf
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+  when: ansible_os_family == 'FreeBSD'
+
+- name: Create log directory
+  file:
+    path: "{{ pf_log_dir }}"
+    mode: 0755
+    owner: "{{ pf_user }}"
+    group: "{{ pf_group }}"
+    state: directory
+  notify: Restart pf
+
+- name: Create db directory
+  file:
+    path: "{{ pf_db_dir }}"
+    mode: 0755
+    owner: "{{ pf_user }}"
+    group: "{{ pf_group }}"
+    state: directory
+  notify: Restart pf
+
+- name: Create pf.conf
+  template:
+    src: pf.conf.j2
+    dest: "{{ pf_conf }}"
+  notify: Restart pf
+
+- name: Start pf
+  service:
+    name: "{{ pf_service }}"
+    enabled: true
+    state: started
