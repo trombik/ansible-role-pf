@@ -6,14 +6,10 @@ galaxy_info:
   license: BSD
   min_ansible_version: 2.0
   platforms:
-  - name: FreeBSD
-    versions:
-#   - all
-#   - 10.3
   - name: OpenBSD
     versions:
-      - 5.9
-      - 6.0
+    - 5.9
+    - 6.0
 
   galaxy_tags:
     - pf
