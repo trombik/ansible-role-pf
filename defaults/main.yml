@@ -3,6 +3,7 @@ pf_conf_dir: /etc/pf.conf.d
 
 pf_rule: |
   set skip on { lo }
-  block
+  block log all
+  pass in  proto icmp from any to any
   pass in  proto tcp from any to any port 22
   pass out on egress from (egress) to any
