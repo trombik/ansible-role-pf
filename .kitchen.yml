@@ -20,7 +20,7 @@ provisioner:
   ansible_vault_password_file: <%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %>
 
 platforms:
-  - name: openbsd-6.0-amd64
+  - name: ansible-openbsd-6.0-amd64
     driver:
       box: trombik/ansible-openbsd-6.0-amd64
       box_check_update: false
@@ -30,7 +30,7 @@ platforms:
     provisioner:
       extra_vars:
         ansible_python_interpreter: '/usr/local/bin/python'
-  - name: openbsd-5.9-amd64
+  - name: ansible-openbsd-5.9-amd64
     driver:
       box: trombik/ansible-openbsd-5.9-amd64
       box_check_update: false
@@ -45,7 +45,7 @@ suites:
   - name: default
     provisioner:
       name: ansible_playbook
-      playbook: tests/serverspec/default.yml
+      playbook: test/serverspec/default.yml
     verifier:
       name: shell
-      command: rspec -c -f d -I tests/serverspec tests/serverspec/default_spec.rb
+      command: rspec -c -f d -I test/serverspec test/serverspec/default_spec.rb
