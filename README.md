@@ -1,7 +1,7 @@
 ansible-role-pf
 =====================
 
-A brief description of the role goes here.
+Configure pf firewall
 
 Requirements
 ------------
@@ -11,9 +11,28 @@ None
 Role Variables
 --------------
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| pf\_conf | Path to `pf.conf(5)` | /etc/pf.conf |
+| pf\_conf\_dir | Directory where addtional pf.conf fragments can be placed. The role does not do anything with it but create the directory. | /etc/pf.conf.d |
+| pf\_rule | pf rules | see below |
 
+### default pf rules
+
+* skip on lo
+* block everything by default
+* pass all icmp and ssh to the host
+* pass all from the host to any
+
+```
+set skip on { lo }
+block log all
+pass in  proto icmp from any to any
+pass in  proto tcp from any to any port 22
+pass out on egress from (egress) to any
+```
+
+Created by [yaml2readme.rb](https://gist.github.com/trombik/b2df709657c08d845b1d3b3916e592d3)
 
 Dependencies
 ------------
@@ -23,6 +42,20 @@ None
 Example Playbook
 ----------------
 
+```yaml
+- hosts: localhost
+  roles:
+    - ansible-role-pf
+  vars:
+    pf_rule: |
+      set skip on lo
+
+      block return    # block stateless traffic
+      pass            # establish keep-state
+
+      # By default, do not permit remote connections to X11
+      block return in on ! lo0 proto tcp to port 6000:6010
+```
 
 License
 -------
