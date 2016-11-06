@@ -1,15 +1,12 @@
-ansible-role-pf
-=====================
+# ansible-role-pf
 
 Configure pf firewall
 
-Requirements
-------------
+# Requirements
 
 None
 
-Role Variables
---------------
+# Role Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -17,7 +14,7 @@ Role Variables
 | pf\_conf\_dir | Directory where addtional pf.conf fragments can be placed. The role does not do anything with it but create the directory. | /etc/pf.conf.d |
 | pf\_rule | pf rules | see below |
 
-### default pf rules
+## default pf rules
 
 * skip on lo
 * block everything by default
@@ -34,13 +31,11 @@ pass out on egress from (egress) to any
 
 Created by [yaml2readme.rb](https://gist.github.com/trombik/b2df709657c08d845b1d3b3916e592d3)
 
-Dependencies
-------------
+# Dependencies
 
 None
 
-Example Playbook
-----------------
+# Example Playbook
 
 ```yaml
 - hosts: localhost
@@ -57,9 +52,9 @@ Example Playbook
       block return in on ! lo0 proto tcp to port 6000:6010
 ```
 
-License
--------
+# License
 
+```
 Copyright (c) 2016 Tomoyuki Sakurai <tomoyukis@reallyenglish.com>
 
 Permission to use, copy, modify, and distribute this software for any
@@ -73,9 +68,9 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+```
 
-Author Information
-------------------
+# Author Information
 
 Tomoyuki Sakurai <tomoyukis@reallyenglish.com>
 
