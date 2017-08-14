@@ -10,16 +10,20 @@ None
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| pf\_conf | Path to `pf.conf(5)` | /etc/pf.conf |
-| pf\_conf\_dir | Directory where addtional pf.conf fragments can be placed. The role does not do anything with it but create the directory. | /etc/pf.conf.d |
-| pf\_rule | pf rules | see below |
+| `pf_conf` | path to `pf.conf(5)` | `/etc/pf.conf` |
+| `pf_conf_dir` | directory where additional `pf.conf(5)` fragments can be placed. the role does not do anything with it but create the directory.| `/etc/pf.conf.d` |
+| `pf_rule` | see below | |
 
-## default pf rules
+## `pf_rule`
+
+By default, the following `pf(4)` rules are created.
 
 * skip on lo
 * block everything by default
 * pass all icmp and ssh to the host
 * pass all from the host to any
+
+The default value of `pf_rule` is:
 
 ```
 set skip on { lo }
@@ -28,9 +32,6 @@ pass in  proto icmp from any to any
 pass in  proto tcp from any to any port 22
 pass out on egress from (egress) to any
 ```
-
-Created by [yaml2readme.rb](https://gist.github.com/trombik/b2df709657c08d845b1d3b3916e592d3)
-
 # Dependencies
 
 None
