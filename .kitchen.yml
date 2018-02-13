@@ -18,19 +18,8 @@ provisioner:
   additional_copy_path:
     - extra_modules
     - filter_plugins
-  ansible_vault_password_file: <%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %>
 
 platforms:
-  - name: openbsd-5.9-amd64
-    driver:
-      box: trombik/ansible-openbsd-5.9-amd64
-      box_check_update: false
-    driver_config:
-      ssh:
-        shell: '/bin/sh'
-    provisioner:
-      extra_vars:
-        ansible_python_interpreter: '/usr/local/bin/python'
 
   - name: openbsd-6.0-amd64
     driver:
@@ -53,6 +42,29 @@ platforms:
     provisioner:
       extra_vars:
         ansible_python_interpreter: '/usr/local/bin/python'
+
+  - name: openbsd-6.2-amd64
+    driver:
+      box: trombik/ansible-openbsd-6.2-amd64
+      box_check_update: false
+    driver_config:
+      ssh:
+        shell: '/bin/sh'
+    provisioner:
+      extra_vars:
+        ansible_python_interpreter: '/usr/local/bin/python'
+
+  - name: openbsd-snapshot-amd64
+    driver:
+      box: trombik/ansible-openbsd-snapshot-amd64
+      box_check_update: false
+    driver_config:
+      ssh:
+        shell: '/bin/sh'
+    provisioner:
+      extra_vars:
+        ansible_python_interpreter: '/usr/local/bin/python'
+
 suites:
   - name: default
     provisioner:
