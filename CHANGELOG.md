@@ -1,3 +1,7 @@
+## Release 1.1.1
+
+* 19991e4 QA: update OpenBSD versions
+
 ## Release 1.1.0
 
 * fd57630 [feature] Support OpenBSD 6.2 and use include_tasks (#3)
