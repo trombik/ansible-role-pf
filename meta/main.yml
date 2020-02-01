@@ -1,18 +1,15 @@
 ---
 galaxy_info:
+  role_name: pf
   author: Tomoyuki Sakurai
   description: Configures pf firewall
-  company: Reallyenglish
+  company: N/A
   license: BSD
   min_ansible_version: 2.0
   platforms:
-  - name: OpenBSD
-    versions:
-    - 6.0
-    - 6.1
-    - 6.2
-
+    - name: OpenBSD
+      versions:
+        - 6.6
+        - 6.5
   galaxy_tags:
     - pf
-dependencies:
-#  - { role: username.common, some_parameter: 3 }
