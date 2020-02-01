@@ -1,3 +1,5 @@
+---
+
 pf_conf: /etc/pf.conf
 pf_conf_dir: /etc/pf.conf.d
 
